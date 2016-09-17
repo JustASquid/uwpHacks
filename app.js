@@ -74,6 +74,7 @@ function getWords(srcWord, resultCallback) {
             for (var section in sections) {
                 var document = window.document;
                 var nounSection = document.getElementsByClassName(section + "-SECTION")[0];
+                if (!nounSection) continue;
                 var nounList = nounSection.getElementsByTagName("UL")[0].children;
                 for (var i = 0; i < nounList.length; i++) {
                     var link = nounList[i].children[0];
