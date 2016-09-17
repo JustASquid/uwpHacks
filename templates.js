@@ -1,0 +1,33 @@
+var templates = [
+    "Create a @noun that will @verb @nouns",
+    "Make a @noun that can @adv @verb",
+    "Find a way to @adv @verb @nouns",
+    "@verb a @noun so that @noun can @adv @verb",
+    "Invent a @noun that can @verb @nouns",
+    "Tinder for @adj @nouns",
+    "Uber for @adj @nouns",
+    "Create a new @noun that can @verb",
+    "Make a @noun that makes good use of @nouns",
+    "Invent a better @noun",
+    "Find a way to improve @nouns",
+    "Discover a new @noun",
+    "3D print a @adj @noun",
+    "See if you can @verb a @adj @noun @adv",
+    "@verb @noun @adj so that we can @verb @noun @noun @adv",
+    "Implement a more efficient @noun",
+    "Build a @noun using nothing but @nouns",
+    "Find a solution for @adj @nouns",
+    "Build a robotic @noun",
+    "Hack together a @adj @noun",
+    "@nouns can @verb but you can make them @verb as well",
+    "Find a @noun that synergizes with @noun",
+    "Disrupt the market for @adj @nouns",
+    "Solve @noun",
+    "Adapt @noun for @nouns",
+    "Cure @noun",
+    "Alter the design for @nouns so that they work with @adj @nouns",
+    "Find a way to make @nouns more diverse and accessible",
+    "See if you can make @nouns cheaper"
+];
+
+module.exports = templates;

@@ -5,6 +5,8 @@ var favicon = require('serve-favicon');
 var URL = require('url');
 var request = require('request');
 var jsdom = require("jsdom");
+var Parser = require("./parser");
+var templates = require("./templates");
 
 var app = express();
 
@@ -17,11 +19,55 @@ app.get("/", function (req, res) {
     res.sendFile(__dirname + "public/index.html");
 });
 
-app.get("/getWords", function(req, res) {
-    var srcWord = req.query.word;
-    getWords(srcWord, function(result) {
-        res.json(result);
-    });
+app.get("/getIdea", function(req, res) {
+    var srcWords = req.query.words;
+
+    if (!srcWords) throw new Error("Invalid words provided");
+    srcWords.toLowerCase();
+    srcWords = srcWords.split(' ');
+
+    for(var i = 0; i < srcWords.length; i++) {
+        var srcWord = srcWords[i];
+        for (var j = 0; j < srcWord.length; j++) {
+            var char = srcWord.charAt(j);
+            if (char < 'a' || char > 'z') {
+                srcWord.splice(j, 1);
+                j--;
+            }
+        }
+    }
+    console.log(srcWords);
+
+    var allWords = {
+        nouns: [],
+        adjectives: [],
+        verbs: [],
+        adverbs: []
+    };
+
+    var callCount = 0;
+    var callback = function() {
+        callCount--;
+
+        if (callCount <= 0) {
+            var parser = new Parser(allWords);
+            var idea = "";
+            var iterations = 0;
+            while(!idea && iterations < 10) {
+                var templateIndex = Math.floor(Math.random() * templates.length);
+                var template = templates[templateIndex];
+                idea = parser.parse(template);
+                iterations++;
+            }
+
+            res.json({ idea: idea });
+        }
+    };
+
+    for (i = 0; i < srcWords.length; i++) {
+        callCount++;
+        getWords(srcWords[i], allWords, callback);
+    }
 });
 
 // catch 404 and forward to error handler
@@ -54,7 +100,7 @@ var sections = {
     ADVERB: 'adverbs'
 };
 
-function getWords(srcWord, resultCallback) {
+function getWords(srcWord, outputResult, resultCallback) {
     var word = srcWord;
     var url = "http://wordassociations.net/search?hl=en&w=" + word;
     jsdom.env({
@@ -64,13 +110,6 @@ function getWords(srcWord, resultCallback) {
                 throw new Error("Error loading words");
             }
 
-            var result = {
-                nouns: [],
-                adjectives: [],
-                verbs: [],
-                adverbs: []
-            };
-
             for (var section in sections) {
                 var document = window.document;
                 var nounSection = document.getElementsByClassName(section + "-SECTION")[0];
@@ -79,13 +118,15 @@ function getWords(srcWord, resultCallback) {
                 for (var i = 0; i < nounList.length; i++) {
                     var link = nounList[i].children[0];
                     var word = link.textContent;
-                    result[sections[section]].push(word);
+                    outputResult[sections[section]].push(word);
                 }
             }
 
-            resultCallback(result);
+            resultCallback();
         }
     });
 }
+
+
 
 module.exports = app;
