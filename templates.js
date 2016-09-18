@@ -27,7 +27,19 @@ var templates = [
     "Cure @noun",
     "Alter the design for @nouns so that they work with @adj @nouns",
     "Find a way to make @nouns more diverse and accessible",
-    "See if you can make @nouns cheaper"
+    "See if you can make @nouns cheaper",
+    "Cure @noun using @noun for mankind",
+    "Create a @noun to end all @nouns",
+    "Find a way to @adv @verb @nouns",
+    "Build a better @noun",
+    "Build something so people can finally @verb their @nouns",
+    "Reduce the barrier of entry for @adj @noun development",
+    "C++ implementation of @noun",
+    "Python script to @verb a @noun",
+    "Java code to @adv @verb @nouns",
+    "@verb @nouns in a new and exciting way",
+    "Military-focused @nouns and @nouns",
+    "VR-enabled @nouns"
 ];
 
 module.exports = templates;
