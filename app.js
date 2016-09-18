@@ -23,20 +23,12 @@ app.get("/getIdea", function(req, res) {
     var srcWords = req.query.words;
 
     if (!srcWords) throw new Error("Invalid words provided");
-    srcWords.toLowerCase();
+    srcWords = srcWords.toLowerCase();
     srcWords = srcWords.split(' ');
 
     for(var i = 0; i < srcWords.length; i++) {
-        var srcWord = srcWords[i];
-        for (var j = 0; j < srcWord.length; j++) {
-            var char = srcWord.charAt(j);
-            if (char < 'a' || char > 'z') {
-                srcWord.splice(j, 1);
-                j--;
-            }
-        }
+        srcWords[i] = srcWords[i].replace(/[^a-z]/g, '');
     }
-    console.log(srcWords);
 
     var allWords = {
         nouns: [],

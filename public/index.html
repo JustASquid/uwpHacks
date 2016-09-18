@@ -3,6 +3,32 @@
         crossorigin="anonymous"></script>
 <script src="js/src.js"></script>
 
+<style>
+    body {
+        padding-top: 80px;
+        text-align: center;
+        font-family: monaco, monospace;
+        background: #ADD8E6;
+        background-size: cover;
+    }
+
+    }
+
+    h1, h2 {
+        display: inline-block;
+        background: #ffffff;
+    }
+    h1 {
+        font-size: 30px
+    }
+    h2 {
+        font-size: 20px;
+    }
+    span {
+        background: #fd0;
+    }
+</style>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -11,5 +37,23 @@
 </head>
 <body>
     <h1>Hackathon ideas here</h1>
+
+    <h1>|Welcome to the|<span>Hackathon Idea Generator</span>|</h1><br>
+
+    <label style="margin-bottom: 10px"> |Input your interests|</label>
+    <br>
+    <input type="text" name="Text1" id="words-input" style="margin-bottom: 20px; padding-top:25px; padding-bottom:25px; padding-right:20px; padding-left:20px;width:700; height:30px; border-radius:5px; border:2px solid #6495ED; Font-family: Courier; Font-weight: bold; font-size:25px;"/>
+    <br>
+    <button onclick="generate()" style="margin-bottom: 20px; border-radius: 5px; border: 2px solid #6495ED; background-color: #40e0d0; height:50px; width:250px; font-family: Courier; font-weight:bold; font-size:30px;">Generate!</button>
+    <br/>
+    <div id="output">
+
+    </div>
+
+    <IMG STYLE="position:absolute; TOP:0px; LEFT:0px; WIDTH:50px; HEIGHT:50px" SRC="https://scontent-yyz1-1.xx.fbcdn.net/v/t1.0-9/14264987_345504532506547_5281558916116286754_n.png?oh=c39f67c5b21eebf270b06d40efec3aae&oe=5837F31B">
+    <IMG STYLE="position:static; TOP:300px; LEFT:150px; WIDTH:450px; HEIGHT:450px" SRC="https://static.wixstatic.com/media/b2c0a7_5fa4e6c7341640c8b4b95c48f53faa90.png/v1/fill/w_566,h_539,al_c,lg_1/b2c0a7_5fa4e6c7341640c8b4b95c48f53faa90.png">
+    <div style="border-radius: 5px; border: 2px solid #6495ED; margin:auto; margin-top:0px;height:75px; background-color:#40e0d0; Font-family:Courier; Font-size:30px; font-style: italic; padding-top: 20px; padding-bottom: 15px;"><span style = "background-color:#40e0d0; color: white">Hackathon tomorrow? Fresh outta ideas? We've got you covered!</span></div>
+    <div style="border-radius: 5px; border: 2px solid #6495ED; margin-top:0px; margin: auto; height:10px; background-color:#40e0d0; Font-family:Courier; Font-size:9px; font-style: italic;align:left"><span style = "background-color:#40e0d0; color: white">© UWP Hacks - Jeff, Daniel, Shruthi</span></div>
+
 </body>
 </html>

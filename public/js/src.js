@@ -1,6 +1,14 @@
-$(function() {
-    var words = "insurance medicine aerospace accounting race car web service gun people cure fast";
+function generate() {
+    var words = $("#words-input").val();
     $.get( "http://localhost:3000/getIdea", { words: words }, function(response) {
-        console.log(response.idea);
+        if (response.idea) {
+            $("#output").text(response.idea);
+        } else {
+            $("#output").text("Could not generate an idea with these parameters!");
+        }
     });
+}
+
+$(function() {
+
 });
